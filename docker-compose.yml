@@ -1,0 +1,40 @@
+services:
+  app:
+    build: .
+    container_name: todo-list-app
+    ports:
+      - "8080:80"
+    environment:
+      FUEL_ENV: development
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      mysql-local:
+        condition: service_healthy
+    restart: unless-stopped
+
+  mysql-local:
+    image: mysql:8.0
+    container_name: todo-list-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: todo_list
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-uroot", "-proot", "--silent"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 20s
+    restart: unless-stopped
+
+volumes:
+  mysql_data:

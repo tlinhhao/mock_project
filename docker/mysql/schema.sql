@@ -1,0 +1,59 @@
+CREATE TABLE IF NOT EXISTS todos (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    title VARCHAR(200) NOT NULL,
+    completed TINYINT(1) NOT NULL DEFAULT 0,
+    created DATETIME NULL,
+    modified DATETIME NULL,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS categories (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    created DATETIME NULL,
+    modified DATETIME NULL,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS blogs (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    title VARCHAR(200) NOT NULL DEFAULT '',
+    user_id INT UNSIGNED NULL,
+    category_id INT UNSIGNED NULL,
+    created DATETIME NULL,
+    modified DATETIME NULL,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS blog_children (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    blog_id INT UNSIGNED NOT NULL,
+    position INT UNSIGNED NOT NULL,
+    created DATETIME NULL,
+    modified DATETIME NULL,
+    PRIMARY KEY (id),
+    UNIQUE KEY blog_child_position (blog_id, position)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS blog_contents (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    blog_child_id INT UNSIGNED NOT NULL,
+    position TINYINT UNSIGNED NOT NULL,
+    body TEXT NOT NULL,
+    image VARCHAR(255) NOT NULL,
+    created DATETIME NULL,
+    modified DATETIME NULL,
+    PRIMARY KEY (id),
+    UNIQUE KEY child_position (blog_child_id, position)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS users (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    created DATETIME NULL,
+    modified DATETIME NULL,
+    PRIMARY KEY (id),
+    UNIQUE KEY users_email (email)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

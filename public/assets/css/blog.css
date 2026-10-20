@@ -1,0 +1,757 @@
+/* ==========================================================================
+   BÁO ĐIỆN TỬ & BLOG - PHONG CÁCH TÒA SOẠN CHUYÊN NGHIỆP
+   ========================================================================== */
+
+:root {
+  --ink: #18181b;
+  --ink-secondary: #3f3f46;
+  --muted: #71717a;
+  --line: #e4e4e7;
+  --line-strong: #a1a1aa;
+  --paper: #fafafa;
+  --card: #ffffff;
+  --accent: #b91c1c;          /* Đỏ báo chí kinh điển */
+  --accent-hover: #991b1b;
+  --font-serif: Georgia, "Times New Roman", "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* --------------------------------------------------------------------------
+   0. Thanh điều hướng đầu trang (Header / Navigation)
+   -------------------------------------------------------------------------- */
+
+.app-nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto 28px;
+  padding: 14px 4px;
+  border-bottom: 2px solid #18181b;
+  font-family: var(--font-sans);
+}
+
+.app-nav a {
+  color: #1f2937;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 4px 0;
+  transition: color 0.15s ease;
+}
+
+.app-nav a:hover {
+  color: var(--accent);
+}
+
+.nav-user {
+  margin-left: auto;
+  font-size: 14px;
+  font-weight: 500;
+  color: #4b5563;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nav-logout {
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+.nav-logout input[type="submit"] {
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  padding: 5px 12px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  color: #4b5563;
+  background: #ffffff;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.nav-logout input[type="submit"]:hover {
+  background: #fee2e2;
+  border-color: #fca5a5;
+  color: #b91c1c;
+}
+
+/* --------------------------------------------------------------------------
+   1. Typography & Cấu trúc bài đọc (Public Blog Reader)
+   -------------------------------------------------------------------------- */
+
+.article {
+  max-width: 760px;
+  margin: 0 auto 40px;
+  padding: 36px 40px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.article .eyebrow {
+  display: inline-block;
+  margin: 0 0 16px;
+  padding-left: 10px;
+  border-left: 3px solid var(--accent);
+  color: var(--accent);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.article h1 {
+  margin: 0 0 18px;
+  font-family: var(--font-serif);
+  font-size: 38px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #111827;
+  letter-spacing: -0.015em;
+}
+
+.article-byline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin: 0 0 32px;
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.article-byline .byline-author {
+  color: var(--ink-secondary);
+}
+
+.article-byline .byline-author strong {
+  color: #111827;
+  font-weight: 600;
+}
+
+.article-byline time {
+  color: var(--muted);
+}
+
+/* Trong trang bài đọc: các phần blog con nối tiếp mượt mà như một bài báo */
+.article .child-blog {
+  margin: 0 0 28px;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+}
+
+.article .rich-text {
+  font-family: var(--font-serif);
+  font-size: 18.5px;
+  line-height: 1.85;
+  color: #222222;
+  word-break: break-word;
+}
+
+.article .rich-text p {
+  margin: 0 0 1.3em;
+  text-align: justify;
+}
+
+.article .rich-text h2,
+.article .rich-text h3 {
+  margin: 1.6em 0 0.6em;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.3;
+}
+
+.article .rich-text h2 {
+  font-size: 26px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 8px;
+}
+
+.article .rich-text h3 {
+  font-size: 21px;
+}
+
+.article .rich-text img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 24px auto;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.article .rich-text blockquote {
+  margin: 1.8em 0;
+  padding: 14px 24px;
+  border-left: 4px solid var(--accent);
+  background: #f8fafc;
+  font-style: italic;
+  color: #374151;
+  font-size: 1.05em;
+  line-height: 1.7;
+}
+
+.article .rich-text ul,
+.article .rich-text ol {
+  margin: 0 0 1.3em;
+  padding-left: 28px;
+}
+
+.article .rich-text li {
+  margin-bottom: 0.4em;
+}
+
+.article .rich-text a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.article .rich-text a:hover {
+  color: var(--accent-hover);
+}
+
+/* --------------------------------------------------------------------------
+   2. Trang danh sách bài viết (Blog List / Index)
+   -------------------------------------------------------------------------- */
+
+.blog-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 3px double #18181b;
+}
+
+.blog-head .eyebrow {
+  margin: 0 0 6px;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.blog-head h1 {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: 32px;
+  font-weight: 700;
+  color: #111827;
+  letter-spacing: -0.01em;
+}
+
+.search-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.search-form input[type="search"] {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 10px 14px;
+  font: inherit;
+  background: var(--card);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.search-form input[type="search"]:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(185, 28, 28, 0.12);
+}
+
+.search-form button {
+  border: 0;
+  border-radius: 6px;
+  padding: 10px 18px;
+  font: inherit;
+  font-weight: 600;
+  color: #ffffff;
+  background: #111827;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.search-form button:hover {
+  background: #27272a;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--card);
+}
+
+.blog-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.blog-table th,
+.blog-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: middle;
+  word-break: break-word;
+}
+
+.blog-table thead th {
+  background: #f8fafc;
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #475569;
+  border-bottom: 2px solid var(--line);
+}
+
+.blog-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.blog-table tbody tr:hover td {
+  background: #fafaf9;
+}
+
+.blog-table td:first-child a {
+  font-family: var(--font-serif);
+  font-size: 17px;
+  font-weight: 700;
+  color: #111827;
+  text-decoration: none;
+  line-height: 1.4;
+}
+
+.blog-table td:first-child a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.child-names {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 13.5px;
+}
+
+.child-names li {
+  margin: 3px 0;
+}
+
+.child-names a {
+  color: #4b5563;
+  text-decoration: none;
+}
+
+.child-names a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.blog-table td:last-child {
+  white-space: nowrap;
+}
+
+/* --------------------------------------------------------------------------
+   3. Nút bấm và Thao tác (Buttons & Actions)
+   -------------------------------------------------------------------------- */
+
+.button-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  padding: 9px 16px;
+  color: #ffffff;
+  background: #111827;
+  text-decoration: none;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.button-link:hover {
+  background: #27272a;
+  color: #ffffff;
+}
+
+.button-link.secondary {
+  color: #374151;
+  background: #ffffff;
+  border-color: #d1d5db;
+}
+
+.button-link.secondary:hover {
+  background: #f9fafb;
+  border-color: #9ca3af;
+  color: #111827;
+}
+
+button.danger,
+input[type="submit"].danger {
+  border: 0;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font: inherit;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #ffffff;
+  background: #b91c1c;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s ease;
+}
+
+button.danger:hover,
+input[type="submit"].danger:hover {
+  background: #991b1b;
+}
+
+.list-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.list-actions form {
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   4. Phân trang (Pager)
+   -------------------------------------------------------------------------- */
+
+.pager {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.pager a,
+.pager .is-current {
+  min-width: 36px;
+  height: 36px;
+  padding: 0 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid var(--line);
+}
+
+.pager a {
+  color: #374151;
+  background: var(--card);
+}
+
+.pager a:hover {
+  background: #f3f4f6;
+  border-color: #d1d5db;
+}
+
+.pager .is-current {
+  color: #ffffff;
+  background: #111827;
+  border-color: #111827;
+}
+
+.pager .gap {
+  color: var(--muted);
+  padding: 0 4px;
+}
+
+/* --------------------------------------------------------------------------
+   5. Form Biên tập bài viết (Create & Edit Blog)
+   -------------------------------------------------------------------------- */
+
+.blog-form {
+  display: block;
+}
+
+.blog-form label {
+  display: block;
+  margin: 16px 0 6px;
+  font-weight: 600;
+  color: #111827;
+  font-size: 14.5px;
+}
+
+select,
+.blog-form input[type="text"] {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 11px 14px;
+  font: inherit;
+  background: var(--card);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+select:focus,
+.blog-form input[type="text"]:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(185, 28, 28, 0.12);
+}
+
+/* Hộp khối nội dung con trong trang Soạn thảo */
+.blog-form .child-blog {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--card);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.child-head {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.editor {
+  margin-top: 8px;
+}
+
+.editor-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+  padding: 6px;
+  background: #f8fafc;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+
+.editor-bar button {
+  padding: 6px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  background: #ffffff;
+  color: #1f2937;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.editor-bar button:hover {
+  background: #f1f5f9;
+  border-color: #9ca3af;
+}
+
+.editor-body {
+  min-height: 240px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 16px;
+  background: #ffffff;
+  font-family: var(--font-serif);
+  font-size: 18px;
+  line-height: 1.75;
+  color: #1f2937;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.editor-body:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(185, 28, 28, 0.12);
+}
+
+.editor-body:empty:before {
+  content: "Nhập nội dung bài viết, có thể chèn ảnh vào đây...";
+  color: var(--muted);
+  font-family: var(--font-sans);
+  font-size: 15px;
+}
+
+.editor-body img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 16px 0;
+  border-radius: 4px;
+}
+
+.editor-error,
+.field-error {
+  margin: 6px 0 0;
+  color: #dc2626;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+[data-add-child] {
+  margin-top: 18px;
+  border: 1px dashed #9ca3af;
+  background: #ffffff;
+  color: #1f2937;
+  cursor: pointer;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+[data-add-child]:hover {
+  background: #f8fafc;
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+/* --------------------------------------------------------------------------
+   6. Bảng so sánh xác nhận (Confirm Screen)
+   -------------------------------------------------------------------------- */
+
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.compare-table th,
+.compare-table td {
+  border: 1px solid var(--line);
+  padding: 12px 14px;
+  vertical-align: top;
+  text-align: left;
+  word-break: break-word;
+}
+
+.compare-table thead th {
+  background: #f8fafc;
+  font-size: 13px;
+  font-weight: 700;
+  color: #475569;
+}
+
+.is-same {
+  color: #374151;
+}
+
+.is-changed {
+  color: #dc2626;
+  font-weight: 600;
+}
+
+.hint {
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.article-preview h2 {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  margin: 0 0 12px;
+  color: #111827;
+}
+
+/* --------------------------------------------------------------------------
+   7. Chi tiết con / Trang Show
+   -------------------------------------------------------------------------- */
+
+.detail-section {
+  margin: 0 0 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+.post-label a {
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   8. Responsive cho Mobile và Tablet
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 768px) {
+  .article {
+    padding: 24px 18px;
+    margin: 0 -8px 24px;
+    border-radius: 0;
+    border-left: 0;
+    border-right: 0;
+  }
+
+  .article h1 {
+    font-size: 28px;
+    line-height: 1.3;
+  }
+
+  .article .rich-text {
+    font-size: 17.5px;
+    line-height: 1.75;
+  }
+
+  .article .rich-text p {
+    text-align: left;
+  }
+
+  .blog-head {
+    align-items: flex-start;
+  }
+
+  .blog-head h1 {
+    font-size: 26px;
+  }
+
+  .blog-table th,
+  .blog-table td {
+    padding: 10px 12px;
+  }
+}

@@ -1,0 +1,5 @@
+.git
+.idea
+fuel/app/cache
+fuel/app/logs
+fuel/app/tmp
